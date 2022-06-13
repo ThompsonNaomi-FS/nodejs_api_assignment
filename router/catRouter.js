@@ -15,7 +15,7 @@ catRouter.get("/", (req, res, next) => {
     });
 });
 
-catRouter.get("/gi:id", (req, res, next) => {
+catRouter.get("/:id", (req, res, next) => {
     catServiceByID(req.params.id).then(result => {
         res.status(200).json(result.data);
     })
