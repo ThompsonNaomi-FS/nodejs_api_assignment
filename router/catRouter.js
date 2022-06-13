@@ -1,23 +1,22 @@
 const express = require('express');
-const boredRouter = express.Router();
-const { boredService, boredServiceByID } = require('../services/boredService');
+const catRouter = express.Router();
+const { catService, catServiceByID } = require('../services/catService');
 
-boredRouter.get("/", (req, res, next) => {
-    boredService().then(result => {
+catRouter.get("/", (req, res, next) => {
+    catService().then(result => {
         res.status(200).json(result.data);
     })
     .catch(err => {
         res.status(500).json({
             error: {
                 message: error.message,
-
             },
         });
     });
 });
 
-boredRouter.get("/?key=:key", (req, res, next) => {
-    boredServiceByID(req.params.key).then(result => {
+catRouter.get("/gi:id", (req, res, next) => {
+    catServiceByID(req.params.id).then(result => {
         res.status(200).json(result.data);
     })
         .catch(err => {
@@ -29,4 +28,4 @@ boredRouter.get("/?key=:key", (req, res, next) => {
     });
 });
 
-module.exports = boredRouter;
+module.exports = catRouter;

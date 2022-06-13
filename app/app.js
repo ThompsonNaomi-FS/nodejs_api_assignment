@@ -1,12 +1,12 @@
 const express = require("express");
-const boredRouter = require("../router/boredRouter");
+const catRouter = require("../router/catRouter");
 
 const app = express();
 app.get("/", (req, res, next) => {
     res.status(200).json({message: "Service is up"});
 });
 
-app.use("/activity", boredRouter);
+app.use("/fact", catRouter);
 
 app.use((req, res, next) => {  
     const error = new Error("NOT FOUND!!");
